@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "express24",
     "version": "1.0.0",
     "description": "Node.js course project",
@@ -27,4 +28,20 @@
         "eslint": "^4.1.1",
         "eslint-config-google": "^0.8.0"
     }
+=======
+  "name": "Express24",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tdochev/Express24/",
+  "author": "<tdd@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.8.0"
+  }
+>>>>>>> ba7110fddebad1d376d7db7e23d47ebdfa2fe9b8
 }
