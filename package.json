@@ -1,0 +1,30 @@
+{
+    "name": "express24",
+    "version": "1.0.0",
+    "description": "Node.js course project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tdochev/Express24.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tdochev/Express24/issues"
+    },
+    "homepage": "https://github.com/tdochev/Express24#readme",
+    "dependencies": {
+        "express": "^4.15.3",
+        "mongodb": "^2.2.30",
+        "pug": "^2.0.0-rc.2"
+    },
+    "devDependencies": {
+        "babel-eslint": "^7.2.3",
+        "eslint": "^4.1.1",
+        "eslint-config-google": "^0.8.0"
+    }
+}
