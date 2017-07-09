@@ -1,12 +1,21 @@
-const express = require('express');
+const build = require('./build');
+const { connect } = require('../db');
+const { initData } = require('../data');
 
-const init = (data) => {
-    const app = express();
-    app.set('view engine', 'pug');
+const getApp = (config) => {
+    const app = build();
+    return Promise.resolve()
+        .then(connect(config.connectionString))
+        .then((db) => {
+            const data = initData(db);
 
-    return Promise.resolve(app);
+            require('./routers')
+                .attachTo(app, data);
+
+            return app;
+        });
 };
 
 module.exports = {
-    init,
+    getApp,
 };

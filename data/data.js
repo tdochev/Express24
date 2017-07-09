@@ -1,9 +1,9 @@
-const init = (db) => {
+const initData = (db) => {
     return {
 
     };
 };
 
 module.exports = {
-    init,
+    initData,
 };

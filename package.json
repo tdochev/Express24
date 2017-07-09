@@ -23,8 +23,10 @@
         "pug": "^2.0.0-rc.2"
     },
     "devDependencies": {
+        "@types/gulp": "^4.0.4",
         "babel-eslint": "^7.2.3",
         "eslint": "^4.1.1",
-        "eslint-config-google": "^0.8.0"
+        "eslint-config-google": "^0.8.0",
+        "gulp": "^3.9.1"
     }
 }
