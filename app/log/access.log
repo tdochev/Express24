@@ -1,0 +1,1 @@
+::ffff:127.0.0.1 - - [10/Jul/2017:08:56:23 +0000] "GET /api/books HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"

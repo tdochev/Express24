@@ -20,7 +20,9 @@
     "dependencies": {
         "express": "^4.15.3",
         "mongodb": "^2.2.30",
-        "pug": "^2.0.0-rc.2"
+        "morgan": "^1.8.2",
+        "pug": "^2.0.0-rc.2",
+        "rotating-file-stream": "^1.2.2"
     },
     "devDependencies": {
         "@types/gulp": "^4.0.4",
