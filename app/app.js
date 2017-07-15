@@ -1,21 +1,34 @@
-const build = require('./build');
-const { connect } = require('../db');
-const { initData } = require('../data');
+/* globals __dirname */
 
-const getApp = (config) => {
-    const app = build();
-    return Promise.resolve()
-        .then(connect(config.connectionString))
-        .then((db) => {
-            const data = initData(db);
+const express = require('express');
+const fs = require('fs');
+const morgan = require('morgan');
+const path = require('path');
+const rfs = require('rotating-file-stream');
+const logDirectory = path.join(__dirname, 'log');
+const bodyParser = require('body-parser');
 
-            require('./routers')
-                .attachTo(app, data);
+if (!fs.existsSync(logDirectory)) {
+    fs.mkdirSync(logDirectory);
+}
 
-            return app;
-        });
+const accessLogStream = rfs('access.log', {
+    interval: '1d',
+    path: logDirectory,
+});
+
+const init = (data) => {
+    const app = express();
+    app.set('view engine', 'pug');
+    app.use(morgan('combined', { stream: accessLogStream }));
+
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    require('./routers').attachTo(app, data);
+    return app;
 };
 
 module.exports = {
-    getApp,
+    init,
 };

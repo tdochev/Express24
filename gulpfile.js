@@ -1,11 +1,15 @@
 const gulp = require('gulp');
+const config = require('./config');
 
 gulp.task('server-start', () => {
-    const config = require('./config');
-
-    require('./app').getApp(config).then((app) => {
-        app.listen('3001',
-            // eslint-disable-next-line no-console
-            console.log(`Magic happens at port: ${config.port}`));
-    });
+    return Promise.resolve()
+        .then(() => require('./db').init(config.connectionString))
+        .then((db) => require('./data').init(db))
+        .then((data) => require('./app').init(data))
+        .then((app) => {
+            app.listen(
+                config.port,
+                // eslint-disable-next-line no-console
+                () => console.log(`Magic happends at :${config.port}`));
+        });
 });

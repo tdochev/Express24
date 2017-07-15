@@ -1,9 +1,9 @@
-const initData = (db) => {
-    return {
+const BooksData = require('./books.data');
 
-    };
+const init = (db) => {
+    return Promise.resolve({
+        books: new BooksData(db),
+    });
 };
 
-module.exports = {
-    initData,
-};
+module.exports = { init };
