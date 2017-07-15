@@ -19,6 +19,7 @@ class BaseMongoDbData {
     create(model) {
         return this.collection.insert(model)
             .then(() => {
+                console.log(model);
                 return model;
             });
     }
