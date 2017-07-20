@@ -13,7 +13,7 @@ const attachTo = (app, data) => {
     });
     authRouter.post('/sign-in', Passport.authenticate('local'),
         (req, res) => {
-            console.log(res);
+            console.log(req.user);
         });
 
     app.use('/auth/', authRouter);
