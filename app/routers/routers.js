@@ -12,7 +12,7 @@ const attachTo = (app, data, authProvider) => {
         .filter((file) => file.includes('.router'))
         .forEach((file) => {
             const modulePath = path.join(__dirname, file);
-            require(modulePath).attachTo(app, data, authProvider);
+            require(modulePath).attachTo(app, data);
         });
 };
 

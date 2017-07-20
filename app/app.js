@@ -8,6 +8,7 @@ const rfs = require('rotating-file-stream');
 const logDirectory = path.join(__dirname, 'log');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
 
 if (!fs.existsSync(logDirectory)) {
     fs.mkdirSync(logDirectory);
@@ -26,8 +27,10 @@ const init = (data) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
+    app.use(cookieParser());
+
     require('./auth').attachTo(app, data);
-    require('./routers').attachTo(app, data, passport);
+    require('./routers').attachTo(app, data);
     return app;
 };
 
