@@ -25,7 +25,6 @@ gulp.task('pre-test', () => {
             './db/**/*.js',
             './models/**/*.js',
             './server.js',
-            './data/base/base.data.js',
         ])
         .pipe(istanbul({
             includeUntested: true,
@@ -36,9 +35,10 @@ gulp.task('pre-test', () => {
 gulp.task('tests:unit', ['pre-test'], () => {
     return gulp.src([
             './test/unit/**/*.js',
+            './test/integration/**/*.js',
         ])
         .pipe(mocha({
-            reporter: 'nyan',
+            reporter: 'spec',
         }))
         .pipe(istanbul.writeReports());
 });

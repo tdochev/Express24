@@ -7,7 +7,6 @@ const path = require('path');
 const rfs = require('rotating-file-stream');
 const logDirectory = path.join(__dirname, 'log');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 const cookieParser = require('cookie-parser');
 
 if (!fs.existsSync(logDirectory)) {
