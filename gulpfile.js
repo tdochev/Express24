@@ -1,6 +1,9 @@
 const gulp = require('gulp');
 const config = require('./config');
 
+const istanbul = require('gulp-istanbul');
+const mocha = require('gulp-mocha');
+
 gulp.task('server-start', () => {
     return Promise.resolve()
         .then(() => require('./db').init(config.connectionString))
@@ -12,4 +15,30 @@ gulp.task('server-start', () => {
                 // eslint-disable-next-line no-console
                 () => console.log(`Magic happends at :${config.port}`));
         });
+});
+
+gulp.task('pre-test', () => {
+    return gulp.src([
+            './data/**/*.js',
+            './app/**/*.js',
+            './config/**/*.js',
+            './db/**/*.js',
+            './models/**/*.js',
+            './server.js',
+            './data/base/base.data.js',
+        ])
+        .pipe(istanbul({
+            includeUntested: true,
+        }))
+        .pipe(istanbul.hookRequire());
+});
+
+gulp.task('tests:unit', ['pre-test'], () => {
+    return gulp.src([
+            './test/unit/**/*.js',
+        ])
+        .pipe(mocha({
+            reporter: 'nyan',
+        }))
+        .pipe(istanbul.writeReports());
 });
