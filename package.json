@@ -31,6 +31,13 @@
         "rotating-file-stream": "^1.2.2"
     },
     "devDependencies": {
+        "@types/chai": "^4.0.1",
+        "@types/gulp-istanbul": "^0.9.31",
+        "@types/gulp-mocha": "0.0.30",
+        "@types/istanbul": "^0.4.29",
+        "@types/mocha": "^2.2.41",
+        "@types/selenium-webdriver": "^3.0.4",
+        "@types/supertest": "^2.0.2",
         "babel-eslint": "^7.2.3",
         "chai": "^4.1.0",
         "eslint": "^4.1.1",
@@ -40,6 +47,7 @@
         "gulp-mocha": "3.0.1",
         "istanbul": "^0.4.5",
         "mocha": "^3.4.2",
+        "selenium-webdriver": "^3.4.0",
         "supertest": "^3.0.0"
     }
 }
