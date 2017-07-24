@@ -15,15 +15,16 @@ gulp.task('concat', () => {
 });
 
 gulp.task('server-start', ['concat'], () => {
-    return Promise.resolve()
-        .then(() => require('./db').init(config.connectionString))
-        .then((db) => require('./data').init(db))
-        .then((data) => require('./app').init(data))
-        .then((app) => {
-            return app.listen(config.port, () =>
-                // eslint-disable-next-line no-console
-                console.log(`Magic happens at :${config.port}`));
-        }).then((server) => require('./socket').startIo(server));
+    // return Promise.resolve()
+    //     .then(() => require('./db').init(config.connectionString))
+    //     .then((db) => require('./data').init(db))
+    //     .then((data) => require('./app').init(data))
+    //     .then((app) => {
+    //         return app.listen(config.port, () =>
+    //             // eslint-disable-next-line no-console
+    //             console.log(`Magic happens at :${config.port}`));
+    //     }).then((server) => require('./socket').startIo(server));
+    require('./server').start(config.connectionString, config.port);
 });
 
 gulp.task('pre-test', () => {
@@ -58,18 +59,7 @@ const testConfig = {
 };
 
 gulp.task('test-server:start', () => {
-    return Promise.resolve()
-        .then(() => require('./db').init(testConfig.connectionString))
-        .then((db) => require('./data').init(db))
-        .then((data) => require('./app').init(data))
-        .then((app) => {
-            app.listen(
-                testConfig.port,
-                // eslint-disable-next-line no-console
-                () => console.log(
-                    `Test server running at :${testConfig.port}`
-                ));
-        });
+    require('./server').start(testConfig.connectionString, testConfig.port);
 });
 
 const { MongoClient } = require('mongodb');
