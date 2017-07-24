@@ -24,7 +24,8 @@ gulp.task('server-start', ['concat'], () => {
     //             // eslint-disable-next-line no-console
     //             console.log(`Magic happens at :${config.port}`));
     //     }).then((server) => require('./socket').startIo(server));
-    require('./server').start(config.connectionString, config.port);
+    require('./server').start(config.connectionString, config.port,
+        'Magic happens at:');
 });
 
 gulp.task('pre-test', () => {
@@ -59,7 +60,8 @@ const testConfig = {
 };
 
 gulp.task('test-server:start', () => {
-    require('./server').start(testConfig.connectionString, testConfig.port);
+    require('./server').start(testConfig.connectionString, testConfig.port,
+        'Test server running at:');
 });
 
 const { MongoClient } = require('mongodb');
