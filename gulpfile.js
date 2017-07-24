@@ -3,8 +3,18 @@ const config = require('./config');
 
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
+const concat = require('gulp-concat');
 
-gulp.task('server-start', () => {
+gulp.task('concat', () => {
+    return gulp.src([
+            './node_modules/jquery/dist/jquery.min.js',
+            './node_modules/socket.io-client/dist/socket.io.js',
+        ])
+        .pipe(concat('libs.js'))
+        .pipe(gulp.dest('./static/js/'));
+});
+
+gulp.task('server-start', ['concat'], () => {
     return Promise.resolve()
         .then(() => require('./db').init(config.connectionString))
         .then((db) => require('./data').init(db))
