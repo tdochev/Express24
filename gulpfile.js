@@ -10,11 +10,10 @@ gulp.task('server-start', () => {
         .then((db) => require('./data').init(db))
         .then((data) => require('./app').init(data))
         .then((app) => {
-            app.listen(
-                config.port,
+            return app.listen(config.port, () =>
                 // eslint-disable-next-line no-console
-                () => console.log(`Magic happends at :${config.port}`));
-        });
+                console.log(`Magic happens at :${config.port}`));
+        }).then((server) => require('./socket').startIo(server));
 });
 
 gulp.task('pre-test', () => {
