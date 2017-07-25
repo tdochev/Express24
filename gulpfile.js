@@ -4,17 +4,27 @@ const config = require('./config');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 const concat = require('gulp-concat');
+const concatCss = require('gulp-concat-css');
 
-gulp.task('concat', () => {
+gulp.task('concat:js', () => {
     return gulp.src([
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/socket.io-client/dist/socket.io.js',
+            './node_modules/bootstrap/dist/js/bootstrap.min.js',
         ])
         .pipe(concat('libs.js'))
         .pipe(gulp.dest('./static/js/'));
 });
 
-gulp.task('server-start', ['concat'], () => {
+gulp.task('concat:css', () => {
+    return gulp.src([
+            './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        ])
+        .pipe(concatCss('libs.css'))
+        .pipe(gulp.dest('./static/css/'));
+});
+
+gulp.task('server-start', ['concat:js', 'concat:css'], () => {
     // return Promise.resolve()
     //     .then(() => require('./db').init(config.connectionString))
     //     .then((db) => require('./data').init(db))
