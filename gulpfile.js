@@ -24,7 +24,15 @@ gulp.task('concat:css', () => {
         .pipe(gulp.dest('./static/css/'));
 });
 
-gulp.task('server-start', ['concat:js', 'concat:css'], () => {
+gulp.task('app:concat:css', () => {
+    return gulp.src([
+            './dev/app.css',
+        ])
+        .pipe(concatCss('app.css'))
+        .pipe(gulp.dest('./static/css/'));
+});
+
+gulp.task('server-start', ['concat:js', 'app:concat:css', 'concat:css'], () => {
     // return Promise.resolve()
     //     .then(() => require('./db').init(config.connectionString))
     //     .then((db) => require('./data').init(db))

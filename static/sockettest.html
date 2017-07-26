@@ -16,7 +16,7 @@
             socket.emit('join', 'Hello World from client');
         });
         socket.on('server', function(data) {
-            console.log(data.msg);
+            console.log(data);
         });
     </script>
 </body>

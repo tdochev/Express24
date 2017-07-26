@@ -25,7 +25,10 @@ const init = (data) => {
     require('./auth').attachTo(app, data);
     require('./routers').attachTo(app, data);
     require('./logger').attachTo(app);
-    return app;
+    return {
+        app,
+        data,
+    };
 };
 
 module.exports = {

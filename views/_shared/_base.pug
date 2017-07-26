@@ -10,6 +10,7 @@ html(lang='en')
         title Express-24
         // Bootstrap core CSS
         link(href='/static/css/libs.css', rel='stylesheet')
+        link(href='/static/css/app.css', rel='stylesheet')
         // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
         //if lt IE 9
             script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
@@ -69,6 +70,75 @@ html(lang='en')
                 p To see the difference between static and fixed top navbars, just scroll.
                 p
                     a.btn.btn-lg.btn-primary(href='../../components/#navbar', role='button') View navbar docs »
+        .container-chat
+                .row
+                    .col-md-5.chat-box
+                        .panel.panel-primary
+                            #accordion.panel-heading
+                                span.glyphicon.glyphicon-comment
+                                |  Chat
+                                .btn-group.pull-right
+                                    a.btn.btn-default.btn-xs(type='button', data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                                        span.glyphicon.glyphicon-chevron-down
+                            #collapseOne.panel-collapse.collapse
+                                .panel-body
+                                    ul.chat
+                                        li.left.clearfix
+                                            span.chat-img.pull-left
+                                                img.img-circle(src='http://placehold.it/50/55C1E7/fff&text=U', alt='User Avatar')
+                                            .chat-body.clearfix
+                                                .header
+                                                    strong.primary-font Jack Sparrow
+                                                    small.pull-right.text-muted
+                                                        span.glyphicon.glyphicon-time
+                                                        | 12 mins ago
+                                                p
+                                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                    | dolor, quis ullamcorper ligula sodales.
+                                        li.right.clearfix
+                                            span.chat-img.pull-right
+                                                img.img-circle(src='http://placehold.it/50/FA6F57/fff&text=ME', alt='User Avatar')
+                                            .chat-body.clearfix
+                                                .header
+                                                    small.text-muted
+                                                        span.glyphicon.glyphicon-time
+                                                        | 13 mins ago
+                                                    strong.pull-right.primary-font Bhaumik Patel
+                                                p
+                                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                    | dolor, quis ullamcorper ligula sodales.
+                                        li.left.clearfix
+                                            span.chat-img.pull-left
+                                                img.img-circle(src='http://placehold.it/50/55C1E7/fff&text=U', alt='User Avatar')
+                                            .chat-body.clearfix
+                                                .header
+                                                    strong.primary-font Jack Sparrow
+                                                    small.pull-right.text-muted
+                                                        span.glyphicon.glyphicon-time
+                                                        | 14 mins ago
+                                                p
+                                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                    | dolor, quis ullamcorper ligula sodales.
+                                        li.right.clearfix
+                                            span.chat-img.pull-right
+                                                img.img-circle(src='http://placehold.it/50/FA6F57/fff&text=ME', alt='User Avatar')
+                                            .chat-body.clearfix
+                                                .header
+                                                    small.text-muted
+                                                        span.glyphicon.glyphicon-time
+                                                        | 15 mins ago
+                                                    strong.pull-right.primary-font Bhaumik Patel
+                                                p
+                                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                    | dolor, quis ullamcorper ligula sodales.
+                                .panel-footer
+                                    .input-group
+                                        input#btn-input.form-control.input-sm(type='text', placeholder='Type your message here...')
+                                        span.input-group-btn
+                                            button#btn-chat.btn.btn-warning.btn-sm
+                                                | Send
+
+        .footer
         // /container
         //
             Bootstrap core JavaScript
