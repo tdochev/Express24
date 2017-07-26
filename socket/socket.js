@@ -13,7 +13,6 @@ const startIo = (server, app, data) => {
                 next();
             });
             console.log(ip);
-            console.log(data);
         });
     });
 };

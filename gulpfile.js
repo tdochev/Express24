@@ -16,6 +16,12 @@ gulp.task('concat:js', () => {
         .pipe(gulp.dest('./static/js/'));
 });
 
+gulp.task('app:concat:js', () => {
+    return gulp.src('./dev/js/*.js')
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('./static/js/'));
+});
+
 gulp.task('concat:css', () => {
     return gulp.src([
             './node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -26,25 +32,26 @@ gulp.task('concat:css', () => {
 
 gulp.task('app:concat:css', () => {
     return gulp.src([
-            './dev/app.css',
+            './dev/css/*.css',
         ])
         .pipe(concatCss('app.css'))
         .pipe(gulp.dest('./static/css/'));
 });
 
-gulp.task('server-start', ['concat:js', 'app:concat:css', 'concat:css'], () => {
-    // return Promise.resolve()
-    //     .then(() => require('./db').init(config.connectionString))
-    //     .then((db) => require('./data').init(db))
-    //     .then((data) => require('./app').init(data))
-    //     .then((app) => {
-    //         return app.listen(config.port, () =>
-    //             // eslint-disable-next-line no-console
-    //             console.log(`Magic happens at :${config.port}`));
-    //     }).then((server) => require('./socket').startIo(server));
-    require('./server').start(config.connectionString, config.port,
-        'Magic happens at:');
-});
+gulp.task('server-start', ['concat:js', 'concat:css', 'app:concat:css', 'app:concat:js'],
+    () => {
+        // return Promise.resolve()
+        //     .then(() => require('./db').init(config.connectionString))
+        //     .then((db) => require('./data').init(db))
+        //     .then((data) => require('./app').init(data))
+        //     .then((app) => {
+        //         return app.listen(config.port, () =>
+        //             // eslint-disable-next-line no-console
+        //             console.log(`Magic happens at :${config.port}`));
+        //     }).then((server) => require('./socket').startIo(server));
+        require('./server').start(config.connectionString, config.port,
+            'Magic happens at:');
+    });
 
 gulp.task('pre-test', () => {
     return gulp.src([
