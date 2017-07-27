@@ -16,6 +16,6 @@ block content
         ul.list-group
         each val in context 
             li.list-group-item
-                span.badge 14
-                |     #{val}
+                span.badge #{val.total_books}
+                |     #{val._id}
     .footer

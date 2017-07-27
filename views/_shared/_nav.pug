@@ -35,12 +35,7 @@ mixin nav(user)
                                 a(href='#') Separated link
                             li
                                 a(href='#') One more separated link
-                ul.nav.navbar-nav.navbar-right
-                    li
-                        a(href='../navbar/') Default
-                    li
-                        a(href='../navbar-static-top/') Static top
-                    li.active
-                        a(href='./')
-                            | Fixed top 
-                            span.sr-only (current)
+                form.navbar-form.navbar-right
+                    a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#myModal') Login 
+                    a#btn-register.btn.btn-success(href='#/register') Register
+                    a#btn-logout.btn.btn-danger.hidden(href='#/logout') 

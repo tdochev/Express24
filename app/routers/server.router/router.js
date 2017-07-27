@@ -17,11 +17,15 @@ const attachTo = (app, data) => {
     });
 
     app.get('/authors', (req, res) => {
-        authorsController.showAll(req, res, data);
+        authorsController.showAllBooksOfAuthor(req, res, data);
     });
 
     app.get('/books/show/:id', (req, res) => {
         booksController.showById(req, res, data);
+    });
+
+    app.get('*', function(req, res) {
+        res.status(404).send('THIS IS 404!');
     });
 };
 

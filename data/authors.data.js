@@ -10,9 +10,10 @@ class AuthorsData {
 
     getAll() {
         return this.collection.distinct('author');
-        // this.collection.distinct('author', (err, result) => {
-        //     return Promise.resolve(result.sort());
-        // });
+    }
+
+    aggregate(props, cb) {
+        return this.collection.aggregate(props, cb);
     }
 
     _getCollectionName() {
