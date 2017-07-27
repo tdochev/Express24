@@ -3,7 +3,9 @@ const attachTo = (app, data) => {
         res.send('<h1>Users server route. It works</h1>');
     });
     app.get('/books', (req, res) => {
-        res.send('<h1>Books server route. It works</h1>');
+        data.books.sortAndLimit({ _id: -1 }, 6).then((context) => {
+            res.render('books', { context });
+        });
     });
     app.get('/authors', (req, res) => {
         res.send('<h1>Authors route. It works</h1>');

@@ -5,7 +5,7 @@ const path = require('path');
 
 const attachTo = (app, data, authProvider) => {
     app.get('/', (req, res) => {
-        res.render('_shared/_base');
+        res.render('home');
     });
 
     fs.readdirSync(__dirname)

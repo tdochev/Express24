@@ -1,0 +1,27 @@
+extends _shared/_base
+include _shared/_nav
+include _shared/_chat
+
+block content
+    +nav()
+    .container
+        .jumbotron
+            h1 Navbar example
+            p
+                | This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.
+            p To see the difference between static and fixed top navbars, just scroll.
+            p
+                a.btn.btn-lg.btn-primary(href='../../components/#navbar', role='button') View navbar docs »
+    .container
+        .row
+            .col-sm-6.col-md-4
+                .thumbnail
+                    img(src='...', alt='...')
+                    .caption
+                    h3 Thumbnail label
+                    p ...
+                    p
+                        a.btn.btn-primary(href='#', role='button') Button
+                        a.btn.btn-default(href='#', role='button') Button
+    +chat()
+    .footer

@@ -16,6 +16,11 @@ class BaseMongoDbData {
             .toArray();
     }
 
+    sortAndLimit(sortByObj, limit) {
+        return this.collection.find().sort(sortByObj).limit(limit)
+            .toArray();
+    }
+
     create(model) {
         return this.collection.insert(model)
             .then(() => {
