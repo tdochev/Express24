@@ -13,16 +13,9 @@ block content
             p
                 a.btn.btn-lg.btn-primary(href='../../components/#navbar', role='button') View navbar docs »
     .container
-            .row
-            each val in context 
-                .col-sm-6.col-md-4
-                    .thumbnail
-                        img(src='...', alt='...')
-                        .caption
-                        h3 #{val.title}
-                        p #{val.author}
-                        p
-                            a.btn.btn-primary(href='#', role='button') Button
-                            a.btn.btn-default(href='#', role='button') Button
-    +chat()
+        ul.list-group
+        each val in context 
+            li.list-group-item
+                span.badge 14
+                |     #{val}
     .footer

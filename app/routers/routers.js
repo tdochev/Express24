@@ -3,11 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const attachTo = (app, data, authProvider) => {
-    app.get('/', (req, res) => {
-        res.render('home');
-    });
-
+const attachTo = (app, data) => {
     fs.readdirSync(__dirname)
         .filter((file) => file.includes('.router'))
         .forEach((file) => {
