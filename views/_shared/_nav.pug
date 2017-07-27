@@ -24,7 +24,7 @@ mixin nav(user)
                             span.caret
                         ul.dropdown-menu
                             li
-                                a(href='#') Action
+                                a(href='#') #{user.username}
                             li
                                 a(href='#') Another action
                             li
@@ -36,6 +36,6 @@ mixin nav(user)
                             li
                                 a(href='#') One more separated link
                 form.navbar-form.navbar-right
-                    a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#myModal') Login 
-                    a#btn-register.btn.btn-success(href='#/register') Register
+                    a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#LoginModal') Login 
+                    a#btn-register.btn.btn-success(type='button', data-toggle='modal', data-target='#RegisterModal') Register 
                     a#btn-logout.btn.btn-danger.hidden(href='#/logout') 

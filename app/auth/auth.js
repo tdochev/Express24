@@ -32,7 +32,7 @@ const attachTo = (app, data) => {
     });
 
     passport.deserializeUser((id, done) => {
-        data.users.filterBy(id)
+        data.users.getById(id)
             .then((user) => {
                 done(null, user);
             }).catch(done);

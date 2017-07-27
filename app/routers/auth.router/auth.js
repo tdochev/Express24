@@ -11,10 +11,11 @@ const attachTo = (app, data) => {
                 res.redirect('/auth/sign-in');
             });
     });
-    authRouter.post('/sign-in', Passport.authenticate('local'),
-        (req, res) => {
-            console.log(req.user);
-        });
+    authRouter.post('/sign-in', Passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/auth/sign-in',
+        failureFlash: true,
+    }));
 
     app.use('/auth/', authRouter);
 };

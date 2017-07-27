@@ -21,6 +21,21 @@ html(lang='en')
             Bootstrap core JavaScript
             ==================================================
         // Placed at the end of the document so the pages load faster
+        #LoginModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+                form.modal-content(action="/auth/sign-in" method="POST")
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h4#myModalLabel.modal-title Sign in
+                    .modal-body
+                        .form-group
+                            input.form-control(name="username", type='text', placeholder='User name')
+                        .form-group
+                            input.form-control(name="password", type='password', placeholder='Password')
+                    .modal-footer
+                        button.btn.btn-default(type='button', data-dismiss='modal') Close
+                        button#form-sign-in.btn.btn-success(type='submit') Sign in
         script(src='/static/js/libs.js')
         script(src='/static/js/app.js')
         
