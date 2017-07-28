@@ -6,8 +6,10 @@ const showById = (req, res, data) => {
 };
 
 const showAll = (req, res, data) => {
+    const user = req.user;
+    console.log(req.flash('error'));
     data.books.getAll().then((context) => {
-        res.render('books', { context });
+        res.render('books', { context, user, messages: req.flash('error') });
     });
 };
 
