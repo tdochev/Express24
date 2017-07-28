@@ -4,8 +4,9 @@ const authorsController = require('./controllers/authorsController');
 const attachTo = (app, data) => {
     app.get('/', (req, res) => {
         const user = req.user;
+        console.log(req.flash('error'));
         data.books.sortAndLimit({ _id: -1 }, 6).then((context) => {
-            res.render('books', { context, user });
+            res.render('books', { context, user, messages: req.flash('error') });
         });
     });
 

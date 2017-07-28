@@ -7,6 +7,13 @@ class UsersData extends BaseData {
         super(db, User);
     }
 
+    addToBookShelf(username, book) {
+        return this.findByUsername(username)
+            .then((user) => {
+                console.log(user.bookshelf);
+            });
+    }
+
     getById(id) {
         return this.collection.findOne({ _id: new ObjectID(id) })
             .then((user) => {
@@ -25,18 +32,15 @@ class UsersData extends BaseData {
             .then(([user]) => user);
     }
 
-    checkPassword(username, password) {
-        return this.findByUsername(username)
-            .then((user) => {
-                if (!user) {
-                    throw new Error('Invalid user');
-                }
+    create(username, password) {
+        const user = {
+            username,
+            password,
+        };
 
-                if (user.password !== password) {
-                    throw new Error('Invalid password');
-                }
-
-                return true;
+        return this.collection.insert(user)
+            .then((result) => {
+                return user;
             });
     }
 }

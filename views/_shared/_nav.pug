@@ -24,7 +24,7 @@ mixin nav(user)
                             span.caret
                         ul.dropdown-menu
                             li
-                                a(href='#') #{user.username}
+                                a(href='#') Something
                             li
                                 a(href='#') Another action
                             li
@@ -37,7 +37,9 @@ mixin nav(user)
                                 a(href='#') One more separated link
                 form.navbar-form.navbar-right
                     if user
+                        span.navbar-text Hi #{user.username}
+                        a#btn-logout.btn.btn-danger(href='/auth/logout') Logout
+                    else
                         a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#LoginModal') Login 
-                        a#btn-register.btn.btn-success(type='button', data-toggle='modal', data-target='#RegisterModal') Register 
-                    else    
-                        a#btn-logout.btn.btn-danger(href='/logout') 
+                        a#btn-register.btn.btn-success(type='button', data-toggle='modal', data-target='#RegisterModal') Register     
+                        

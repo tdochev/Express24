@@ -5,12 +5,19 @@ const MongoStore = require('connect-mongo')(session);
 
 const attachTo = (app, data) => {
     passport.use(new Strategy((username, password, done) => {
-        data.users.checkPassword(username, password)
-            .then(() => {
-                return data.users.findByUsername(username);
-            })
+        data.users.findByUsername(username)
             .then((user) => {
-                done(null, user);
+                if (!user) {
+                    return done(null,
+                        false, { message: 'Incorrect username.' });
+                }
+
+                if (user.password !== password) {
+                    return done(null,
+                        false, { message: 'Incorrect password.' });
+                }
+
+                return done(null, user);
             })
             .catch((err) => {
                 done(err);
