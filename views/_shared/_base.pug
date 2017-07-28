@@ -36,6 +36,8 @@ html(lang='en')
                     .modal-footer
                         button.btn.btn-default(type='button', data-dismiss='modal') Close
                         button#form-sign-in.btn.btn-success(type='submit') Sign in
+        if messages
+            p.flash-message #{messages}
         script(src='/static/js/libs.js')
         script(src='/static/js/app.js')
         

@@ -5,6 +5,7 @@ const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 const concat = require('gulp-concat');
 const concatCss = require('gulp-concat-css');
+const transpile = require('gulp-babel');
 
 gulp.task('concat:js', () => {
     return gulp.src([
@@ -19,6 +20,9 @@ gulp.task('concat:js', () => {
 gulp.task('app:concat:js', () => {
     return gulp.src('./dev/js/*.js')
         .pipe(concat('app.js'))
+        .pipe(transpile({
+            presets: ['es2015'],
+        }))
         .pipe(gulp.dest('./static/js/'));
 });
 
@@ -38,7 +42,9 @@ gulp.task('app:concat:css', () => {
         .pipe(gulp.dest('./static/css/'));
 });
 
-gulp.task('server-start', ['concat:js', 'concat:css', 'app:concat:css', 'app:concat:js'],
+gulp.task('server-start', [
+        'concat:js', 'concat:css', 'app:concat:css', 'app:concat:js',
+    ],
     () => {
         // return Promise.resolve()
         //     .then(() => require('./db').init(config.connectionString))
