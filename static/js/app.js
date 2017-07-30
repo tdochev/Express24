@@ -9,7 +9,12 @@ $(function () {
             url: 'api/bookshelf',
             dataSrc: 'bookshelf'
         },
-        columns: [{ data: '_id' }, { data: 'bookId' }, { data: 'title' }, { data: 'isbn' }, { data: 'author' }, { data: 'bookFormatType' }, { data: 'numberOfPages' }]
+        columns: [{ data: 'title' }, { data: 'isbn' }, { data: 'author' }, { data: 'bookFormatType' }, { data: 'numberOfPages' }, {
+            'render': function render(data, type, full, meta) {
+                var removeLink = 'bookShelf/remove/' + full.bookId;
+                return '<a class="btn btn-danger" href=' + removeLink + '>Delete</a>';
+            }
+        }]
     });
 });
 

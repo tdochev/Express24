@@ -13,6 +13,12 @@ class UsersData extends BaseData {
         );
     }
 
+    removeFromBookShelf(userId, bookId) {
+        return (
+            this.collection.update({ _id: userId }, { $pull: { bookshelf: { bookId: bookId } } })
+        );
+    }
+
     getBookshelf(userId) {
         return this.collection.find({ _id: userId }, { bookshelf: 1 })
             .toArray();

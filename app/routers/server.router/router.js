@@ -54,6 +54,18 @@ const attachTo = (app, data) => {
         });
     });
 
+
+    app.get('/bookshelf/remove/:bookID', (req, res) => {
+        const user = req.user;
+        const bookId = req.params.bookID;
+        if (typeof user === 'undefined') {
+            req.flash('error', 'You must log in to use bookshelf!');
+            res.redirect('/');
+        }
+        data.users.removeFromBookShelf(user._id, bookId);
+        res.redirect('/bookshelf');
+    });
+
     app.get('*', (req, res) => {
         res.status(404).send('THIS IS 404!');
     });

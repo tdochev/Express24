@@ -8,13 +8,17 @@ $(() => {
             dataSrc: 'bookshelf',
         },
         columns: [
-            { data: '_id' },
-            { data: 'bookId' },
             { data: 'title' },
             { data: 'isbn' },
             { data: 'author' },
             { data: 'bookFormatType' },
             { data: 'numberOfPages' },
-        ]
+            {
+                'render': (data, type, full, meta) => {
+                    const removeLink = 'bookShelf/remove/' + full.bookId;
+                    return '<a class="btn btn-danger" href=' + removeLink + '>Delete</a>';
+                },
+            },
+        ],
     });
 });
