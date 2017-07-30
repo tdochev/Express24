@@ -4,12 +4,26 @@ const attachTo = (app, data) => {
     const apiRouter = new Router();
 
     apiRouter.get('/users', (req, res) => {
-        if (typeof req.user === 'undefined') {
+        const user = req.user;
+        if (typeof user === 'undefined') {
             res.json({ Error: 'Not Authorised' });
         } else {
-            data.users.filterBy({ username: req.user.username }).then((response) => {
-                res.send(response);
-            });
+            data.users.filterBy({ username: user.username })
+                .then((response) => {
+                    res.send(response);
+                });
+        }
+    });
+
+    apiRouter.get('/bookshelf', (req, res) => {
+        const user = req.user;
+        if (typeof user === 'undefined') {
+            res.json({ Error: 'Not Authorised' });
+        } else {
+            data.users.getBookshelf(user._id)
+                .then((context) => {
+                    res.json(context[0]);
+                });
         }
     });
 

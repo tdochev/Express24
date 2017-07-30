@@ -7,11 +7,15 @@ class UsersData extends BaseData {
         super(db, User);
     }
 
-    addToBookShelf(username, book) {
-        return this.findByUsername(username)
-            .then((user) => {
-                console.log(user.bookshelf);
-            });
+    addToBookShelf(userId, book) {
+        return (
+            this.collection.update({ _id: userId }, { $addToSet: { bookshelf: book[0] } })
+        );
+    }
+
+    getBookshelf(userId) {
+        return this.collection.find({ _id: userId }, { bookshelf: 1 })
+            .toArray();
     }
 
     getById(id) {

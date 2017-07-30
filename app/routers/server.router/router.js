@@ -31,7 +31,30 @@ const attachTo = (app, data) => {
         booksController.showById(req, res, data);
     });
 
-    app.get('*', function(req, res) {
+    app.get('/bookshelf', (req, res) => {
+        const user = req.user;
+        console.log(user);
+        if (typeof user === 'undefined') {
+            req.flash('error', 'You must log in to use bookshelf!');
+            res.redirect('/');
+        }
+        res.render('bookshelf', { user: user, messages: req.flash('error') });
+    });
+
+    app.get('/bookshelf/add/:bookID', (req, res) => {
+        const user = req.user;
+        if (typeof user === 'undefined') {
+            req.flash('error', 'You must log in to use bookshelf!');
+            res.redirect('/');
+        }
+        const bookId = req.params.bookID;
+        data.books.filterBy({ bookId: bookId }).then((book) => {
+            data.users.addToBookShelf(user._id, book);
+            res.redirect('/bookshelf');
+        });
+    });
+
+    app.get('*', (req, res) => {
         res.status(404).send('THIS IS 404!');
     });
 };

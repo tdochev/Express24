@@ -16,17 +16,27 @@ block content
             p
                 a.btn.btn-lg.btn-primary(href='../../components/#navbar', role='button') View navbar docs » #{messages[0]}
     .container
-        .row
-        each val in context 
-            .col-sm-6.col-md-4
-                .thumbnail
-                    img(src='...', alt='...')
-                    .caption
-                    h3 #{val.title}
-                    p #{val.author}
-                    p #{val.bookId}
-                        a.btn.btn-primary(href='#', role='button') Details
-                        if user
-                            a.btn.btn-default(href='bookshelf/add/' +val.bookId, role='button') Add to bookshelf
+        table#example.display(cellspacing='0', width='100%')
+            thead
+                tr
+                    th id
+                    th bookId
+                    th title
+                    th isbn
+                    th author
+                    th bookFormatType
+                    th numberOfPages
+
+            tfoot
+                tr
+                    th id
+                    th bookId
+                    th title
+                    th isbn
+                    th author
+                    th bookFormatType
+                    th numberOfPages
+
+
     +chat(user)
     .footer

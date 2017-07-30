@@ -15,9 +15,10 @@ mixin nav(user)
                     li
                         a(href='/books') Books
                     li
-                        a(href='authors') Authors
-                    li
-                        a(href='#contact') Contact
+                        a(href='/authors') Authors
+                    if user
+                        li
+                            a(href='/bookshelf') Bookshelf
                     li.dropdown
                         a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                             | Dropdown 

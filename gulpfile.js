@@ -13,6 +13,7 @@ gulp.task('concat:js', () => {
             './node_modules/socket.io-client/dist/socket.io.js',
             './node_modules/bootstrap/dist/js/bootstrap.min.js',
             './node_modules/toastr/build/toastr.min.js',
+            './node_modules/datatables/media/js/jquery.dataTables.min.js',
         ])
         .pipe(concat('libs.js'))
         .pipe(gulp.dest('./static/js/'));
@@ -31,6 +32,7 @@ gulp.task('concat:css', () => {
     return gulp.src([
             './node_modules/bootstrap/dist/css/bootstrap.min.css',
             './node_modules/toastr/build/toastr.min.css',
+            './node_modules/datatables/media/css/jquery.dataTables.min.css',
         ])
         .pipe(concatCss('libs.css'))
         .pipe(gulp.dest('./static/css/'));
