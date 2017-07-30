@@ -5,7 +5,6 @@ const attachTo = (app, data) => {
     app.get('/', (req, res) => {
         const user = req.user;
         const messages = req.flash('error');
-        console.log(messages);
         data.books.sortAndLimit({ _id: -1 }, 6).then((context) => {
             res.render('books', {
                 context,
@@ -33,7 +32,6 @@ const attachTo = (app, data) => {
 
     app.get('/bookshelf', (req, res) => {
         const user = req.user;
-        console.log(user);
         if (typeof user === 'undefined') {
             req.flash('error', 'You must log in to use bookshelf!');
             res.redirect('/');

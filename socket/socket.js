@@ -5,14 +5,9 @@ const startIo = (server, app, data) => {
 
     io = io.listen(server);
     io.on('connection', (socket) => {
-        socket.emit('server', { msg: 'Hi from server!', id: socket.id });
-        socket.on('join', (msg) => {
-            console.log(msg);
-            app.use((req, res, next) => {
-                ip = req.ip;
-                next();
-            });
-            console.log(ip);
+        socket.emit('chat', { msg: 'Hi from server!', id: socket.id, sender: 'Express-24' });
+        socket.on('chat', (msg) => {
+            socket.emit('chat', { msg: msg, id: socket.id, sender: 's' });
         });
     });
 };

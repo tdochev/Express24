@@ -1,5 +1,28 @@
 'use strict';
 
+/* globals $ */
+
+// eslint-disable-next-line no-unused-vars
+var chatMessage = function () {
+    function receive(data) {
+        $(function () {
+            var liItem = $('<li>').addClass('left clearfix');
+            var header = $('<div>').addClass('header');
+            var strong = $('<strong>').addClass('primary-font').html(data.sender);
+            var p = $('<p>').html(data.msg);
+            header.append(strong);
+            liItem.append(header);
+            liItem.append(p);
+            $('.chat').append(liItem);
+            $('.collapse').addClass('collapse in');
+        });
+    }
+
+    return {
+        receive: receive
+    };
+}();
+
 /* globals $, */
 
 $(function () {
@@ -80,3 +103,23 @@ var jsonRequester = function () {
         delete: del
     };
 }();
+
+/* globals $, io, chatMessage,  */
+
+$(function () {
+    var socket = io.connect('http://localhost:3001');
+    socket.on('connect', function (data) {
+        socket.emit('join', 'Hello World from client');
+    });
+
+    socket.on('chat', function (data) {
+        chatMessage.receive(data);
+    });
+
+    $('#btn-chat').click(function () {
+        var $input = $('#btn-input');
+        var msg = $input.val();
+        $input.val('');
+        socket.emit('chat', msg);
+    });
+});
