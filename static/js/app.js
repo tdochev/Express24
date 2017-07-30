@@ -1,12 +1,12 @@
 'use strict';
 
-/* globals $ */
+/* globals $, toastr */
 
 $(function () {
-    var $message = $('.flash-message');
-    console.log($message.html());
-    if ($message) {
-        console.log('no msgs');
+    var $message = $('#flash-message');
+    if ($message.length) {
+        var msg = $message.html();
+        toastr.warning(msg);
     }
 });
 

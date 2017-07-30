@@ -1,9 +1,9 @@
-/* globals $ */
+/* globals $, toastr */
 
 $(() => {
-    const $message = $('.flash-message');
-    console.log($message.html());
-    if ($message.length()) {
-        console.log('no msgs');
+    const $message = $('#flash-message');
+    if ($message.length) {
+        const msg = $message.html();
+        toastr.warning(msg);
     }
 });
