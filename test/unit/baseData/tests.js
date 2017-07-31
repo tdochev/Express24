@@ -94,10 +94,11 @@ describe('Unit tests', () => {
             });
 
             it('expect to retrun items that containt props', () => {
-                return data.filterBy({ name: 'pesho' })
+                const props = { name: 'pesho' };
+                return data.filterBy(props)
                     .then((models) => {
                         expect(models).to.be.an('array')
-                            .that.deep.equals([{ name: 'pesho' }]);
+                            .that.deep.equals([props]);
                     });
             });
         });

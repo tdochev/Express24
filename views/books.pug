@@ -19,8 +19,6 @@ block content
         each val in context 
             .col-md-4
                 .thumbnail
-                    img(src='...', alt='...')
-                    .caption
                     h3 #{val.title}
                     p #{val.author}
                     a.btn.btn-primary(href='/books/show/' + val.bookId, role='button') Details

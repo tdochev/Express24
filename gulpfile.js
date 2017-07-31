@@ -71,6 +71,7 @@ gulp.task('pre-test', () => {
             './db/**/*.js',
             './models/**/*.js',
             './server.js',
+            './socket/**/*.js',
         ])
         .pipe(istanbul({
             includeUntested: true,
