@@ -1,7 +1,7 @@
 /* globals $, io, chatMessage,  */
 
 $(() => {
-    const socket = io.connect('http://localhost:3001');
+    const socket = io.connect('//' + window.location.host);
     socket.on('connect', (data) => {
         socket.emit('join', 'Hello World from client');
     });

@@ -1,6 +1,5 @@
 extends _shared/_base
 include _shared/_nav
-include _shared/_chat
 
 block content
     +nav(user)
@@ -28,5 +27,4 @@ block content
                         a.btn.btn-primary(href='#', role='button') Details
                         if user
                             a.btn.btn-default(href='bookshelf/add/' +val.bookId, role='button') Add to bookshelf
-    +chat(user)
     .footer

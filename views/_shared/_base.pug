@@ -1,3 +1,5 @@
+include _chat
+
 doctype html
 html(lang='en')
     head
@@ -38,6 +40,9 @@ html(lang='en')
                         button#form-sign-in.btn.btn-success(type='submit') Sign in
         if (messages && messages.length)
             p#flash-message.hidden #{messages}
+        if (user)
+            block chat
+                +chat()
         script(src='/static/js/libs.js')
         script(src='/static/js/app.js')
         

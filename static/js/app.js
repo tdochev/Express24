@@ -107,7 +107,7 @@ var jsonRequester = function () {
 /* globals $, io, chatMessage,  */
 
 $(function () {
-    var socket = io.connect('http://localhost:3001');
+    var socket = io.connect('//' + window.location.host);
     socket.on('connect', function (data) {
         socket.emit('join', 'Hello World from client');
     });

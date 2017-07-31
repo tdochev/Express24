@@ -24,8 +24,9 @@ const attachTo = (app, data) => {
             });
     }));
 
+    const sessionStore = new MongoStore({ url: 'mongodb://localhost/session' });
     app.use(session({
-        store: new MongoStore({ url: 'mongodb://localhost/session' }),
+        store: sessionStore,
         secret: 'H@ck Th1$',
         resave: true,
         saveUninitialized: true,
@@ -51,6 +52,10 @@ const attachTo = (app, data) => {
         };
         next();
     });
+
+    return {
+        sessionStore,
+    };
 };
 
 module.exports = { attachTo };
