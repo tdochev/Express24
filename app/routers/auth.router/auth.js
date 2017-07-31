@@ -6,7 +6,7 @@ const attachTo = (app, data) => {
 
     authRouter.post('/sign-up', (req, res) => {
         const { username, password } = req.body;
-        let usernameExists = null;
+        let usernameExists;
         data.users.findByUsername(username).then((r) => {
             usernameExists = r;
         });
