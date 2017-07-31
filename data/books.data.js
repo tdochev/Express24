@@ -5,6 +5,10 @@ class BooksData extends BaseData {
     constructor(db) {
         super(db, Book);
     }
+
+    getByBookId(bookId) {
+        return this.collection.findOne({ bookId: bookId });
+    }
 }
 
 module.exports = BooksData;

@@ -1,46 +1,31 @@
 mixin nav(user)
-    nav.navbar.navbar-default.navbar-fixed-top
-        .container
-            .navbar-header
-                button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-                    span.sr-only Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                a.navbar-brand(href='#') Express 24
-            #navbar.navbar-collapse.collapse
-                ul.nav.navbar-nav
-                    li.active
-                        a(href='/') Home
-                    li
-                        a(href='/books') Books
-                    li
-                        a(href='/authors') Authors
-                    if user
+        nav.navbar.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#') Express 24
+                #navbar.navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href='/') Home
                         li
-                            a(href='/bookshelf') Bookshelf
-                    li.dropdown
-                        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                            | Dropdown 
-                            span.caret
-                        ul.dropdown-menu
+                            a(href='/books') Books
+                        li
+                            a(href='/authors') Authors
+                        if user
                             li
-                                a(href='#') Something
+                                a(href='/bookshelf') Bookshelf
                             li
-                                a(href='#') Another action
-                            li
-                                a(href='#') Something else here
-                            li.divider(role='separator')
-                            li.dropdown-header Nav header
-                            li
-                                a(href='#') Separated link
-                            li
-                                a(href='#') One more separated link
-                form.navbar-form.navbar-right
-                    if user
-                        span.navbar-text Hi #{user.username}
-                        a#btn-logout.btn.btn-danger(href='/auth/logout') Logout
-                    else
-                        a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#LoginModal') Login 
-                        a#btn-register.btn.btn-success(type='button', data-toggle='modal', data-target='#RegisterModal') Register     
-                        
+                                a(href='/profile/') Profile
+                    form.navbar-form.navbar-right
+                        if user
+                            span.navbar-text Hi #{user.username}
+                            a#btn-logout.btn.btn-danger(href='/auth/logout') Logout
+                        else
+                            a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#LoginModal') Login 
+                            a#btn-register.btn.btn-success(type='button', data-toggle='modal', data-target='#RegisterModal') Register     
+                            

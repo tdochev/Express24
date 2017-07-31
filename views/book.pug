@@ -1,0 +1,14 @@
+extends _shared/_base
+include _shared/_nav
+
+block content
+    +nav(user)
+    .container
+        .row
+            .col-sm-6.col-md-4
+                    h3 #{context.title}
+                    p #{context.author}
+                    a.btn.btn-primary(href='/book/show/' + context.bookId, role='button') Details
+                    if user
+                        a.btn.btn-default(href='bookshelf/add/' +context.bookId, role='button') Add to bookshelf
+    .footer

@@ -16,14 +16,7 @@ block content
                 a.btn.btn-lg.btn-primary(href='../../components/#navbar', role='button') View navbar docs »
     .container
         .row
-        each val in context 
-            .col-md-4
-                .thumbnail
-                    img(src='...', alt='...')
-                    .caption
-                    h3 #{val.title}
-                    p #{val.author}
-                    a.btn.btn-primary(href='/books/show/' + val.bookId, role='button') Details
-                    if user
-                        a.btn.btn-default(href='bookshelf/add/' +val.bookId, role='button') Add to bookshelf
+            .col-md-12
+                    h3 #{user.username}
+                    p #{user.username}
     .footer

@@ -14,8 +14,13 @@ const attachTo = (app, data) => {
         });
     });
 
-    app.get('/users', (req, res) => {
-        res.send('<h1>Users server route. It works</h1>');
+    app.get('/profile/', (req, res) => {
+        const user = req.user;
+        if (typeof user === 'undefined') {
+            req.flash('error', 'You must log in to see your profile!');
+            res.redirect('/');
+        }
+        res.render('userProfile', { user: user, messages: req.flash('error') });
     });
 
     app.get('/books', (req, res) => {
@@ -26,7 +31,7 @@ const attachTo = (app, data) => {
         authorsController.showAllBooksOfAuthor(req, res, data);
     });
 
-    app.get('/books/show/:id', (req, res) => {
+    app.get('/book/show/:id', (req, res) => {
         booksController.showById(req, res, data);
     });
 
