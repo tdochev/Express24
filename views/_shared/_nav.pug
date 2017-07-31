@@ -21,11 +21,11 @@ mixin nav(user)
                                 a(href='/bookshelf') Bookshelf
                             li
                                 a(href='/profile/') Profile
-                    form.navbar-form.navbar-right
+                    form.navbar-form.navbar-right.form-inline
                         if user
-                            span.navbar-text Hi #{user.username}
-                            a#btn-logout.btn.btn-danger(href='/auth/logout') Logout
+                            span.greet Hi #{user.username}
+                            a#btn-logout.btn.btn-danger.nav-btn(href='/auth/logout') Logout
                         else
-                            a#btn-sign-in.btn.btn-success(type='button', data-toggle='modal', data-target='#LoginModal') Login 
-                            a#btn-register.btn.btn-success(type='button', data-toggle='modal', data-target='#RegisterModal') Register     
+                            a#btn-sign-in.btn.btn-success.nav-btn(type='button', data-toggle='modal', data-target='#LoginModal') Login 
+                            a#btn-register.btn.btn-success.nav-btn(type='button', data-toggle='modal', data-target='#RegisterModal') Register     
                             

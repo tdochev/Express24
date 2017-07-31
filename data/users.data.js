@@ -9,13 +9,21 @@ class UsersData extends BaseData {
 
     addToBookShelf(userId, book) {
         return (
-            this.collection.update({ _id: userId }, { $addToSet: { bookshelf: book[0] } })
+            this.collection.update({
+                _id: userId,
+            }, {
+                $addToSet: { bookshelf: book[0] },
+            })
         );
     }
 
     removeFromBookShelf(userId, bookId) {
         return (
-            this.collection.update({ _id: userId }, { $pull: { bookshelf: { bookId: bookId } } })
+            this.collection.update({
+                _id: userId,
+            }, {
+                $pull: { bookshelf: { bookId: bookId } },
+            })
         );
     }
 

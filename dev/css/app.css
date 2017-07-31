@@ -73,4 +73,13 @@ body {
 
 .container-chat {
     display: block;
+    margin-top: 50px;
+}
+
+span.greet {
+    margin-right: 5px;
+}
+
+.nav-btn {
+    margin-right: 10px;
 }

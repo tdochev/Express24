@@ -6,12 +6,21 @@ const attachTo = (app, data) => {
 
     authRouter.post('/sign-up', (req, res) => {
         const { username, password } = req.body;
-        return data.users.create(username,
-                password)
-            .then(() => {
-                res.send('/auth/sign-in');
-            });
+        let usernameExists = null;
+        data.users.findByUsername(username).then((r) => {
+            usernameExists = r;
+        });
+        if (typeof usernameExists === 'undefined') {
+            return data.users.create(username,
+                    password)
+                .then(() => {
+                    res.redirect('/');
+                });
+        }
+        req.flash('error', 'This username is already taken!');
+        res.redirect('/');
     });
+
     authRouter.post('/sign-in', Passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/',
