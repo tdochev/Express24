@@ -3,13 +3,14 @@ const passportSocketIo = require('passport.socketio');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const config = require('./../config/');
 
 const startIo = (server, app, data) => {
     io = io.listen(server);
 
     io.use(passportSocketIo.authorize({
         secret: 'H@ck Th1$',
-        store: new MongoStore({ url: 'mongodb://localhost/session' }),
+        store: new MongoStore({ url: config.sessionStoreConnectionString }),
         cookieParser: cookieParser,
     }));
 

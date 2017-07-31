@@ -2,6 +2,7 @@ const passport = require('passport');
 const { Strategy } = require('passport-local');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const config = require('./../../config');
 
 const attachTo = (app, data) => {
     passport.use(new Strategy((username, password, done) => {
@@ -24,7 +25,7 @@ const attachTo = (app, data) => {
             });
     }));
 
-    const sessionStore = new MongoStore({ url: 'mongodb://localhost/session' });
+    const sessionStore = new MongoStore({ url: config.sessionStoreConnectionString });
     app.use(session({
         store: sessionStore,
         secret: 'H@ck Th1$',
