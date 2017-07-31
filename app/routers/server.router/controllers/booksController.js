@@ -2,7 +2,6 @@ const showById = (req, res, data) => {
     const id = req.params.id;
     const user = req.user;
     data.books.getByBookId(id).then((context) => {
-        console.log(context);
         res.render('book', { context, user, messages: req.flash('error') });
     });
 };

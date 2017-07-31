@@ -21,7 +21,7 @@ block content
                 .thumbnail
                     h3 #{val.title}
                     p #{val.author}
-                    a.btn.btn-primary(href='/books/show/' + val.bookId, role='button') Details
+                    a.btn.btn-primary(href='/book/show/' + val.bookId, role='button') Details
                     if user
                         a.btn.btn-default(href='bookshelf/add/' +val.bookId, role='button') Add to bookshelf
     .footer
