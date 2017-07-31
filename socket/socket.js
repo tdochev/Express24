@@ -21,7 +21,7 @@ const startIo = (server, app, data) => {
         });
         socket.on('chat', (msg) => {
             const user = socket.request.user.username || 'anonymous';
-            socket.emit('chat', { msg: msg, id: socket.id, sender: user });
+            io.emit('chat', { msg: msg, id: socket.id, sender: user });
         });
     });
 };

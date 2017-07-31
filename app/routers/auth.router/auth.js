@@ -18,7 +18,7 @@ const attachTo = (app, data) => {
                 });
         }
         req.flash('error', 'This username is already taken!');
-        res.redirect('/');
+        return res.redirect('/');
     });
 
     authRouter.post('/sign-in', Passport.authenticate('local', {
